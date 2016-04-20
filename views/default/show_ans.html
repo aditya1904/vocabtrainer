@@ -1,0 +1,227 @@
+<!--
+{{for r in rows:}}
+    <p>
+        {{=r[0].word}}
+</p>
+   {{if r[1] == 1:}}
+        <p>Correct!</p>
+   {{pass}}
+   {{if r[1] == 0:}}
+        <p>Incorrect!</p>
+    {{pass}}
+{{pass}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Start Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    li{
+        font-size:17px;
+    }
+      
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Forum Page</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="{{=URL('index')}}">Home</a></li>
+        <li><a href="{{=URL('load_ques')}}">Start Test?</a></li>
+        <li><a href="{{=URL('word_listings')}}">Word Listings</a></li>
+        <li><a href="#section3">About Us</a></li>
+        <li><a href="#section3">Contact Us</a></li>
+      </ul><br>
+      
+    </div>
+
+    <div class="col-sm-9">
+        <table>
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Meaning</th>
+               
+                </tr>
+            </thead>
+            <tbody>
+     {{for r in rows:}}
+    <tr>
+    <td>{{=r[0].word}}</td>
+    <td>{{=r[0].meaning}}</td>
+{{pass}}
+    </tr>
+            </tbody>
+        </table> 
+        <h1>
+            <a href="{{=URL('start_test')}}">START TEST??</a>
+        </h1>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VocabTrainer</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <link href="{{=URL('static', 'css/styles2.css')}}" rel="stylesheet">
+    <!-- All JavaScript at the bottom, except for Modernizr which enables
+         HTML5 elements & feature detects -->
+    <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"  href="qq">VocabTrainer</a>
+            </div>
+            <!-- Top Menu Items -->
+    
+            
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="{{=URL('index')}}"><i class="glyphicon glyphicon-home"></i> Home </a>
+                    </li>
+                    <li>
+                        <a href="{{=URL('start_test')}}"><i class="glyphicon glyphicon-home"></i> Take Test?</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-home"></i> Learn <i class="caret"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{{=URL('list_easy_words')}}">Easy Words</a>
+                            </li>
+                            <li>
+                                <a href="{{=URL('list_moderate_words')}}">Moderate Words</a>
+                            </li>
+                            <li>
+                                <a href="{{=URL('list_difficult_words')}}">Difficult Words</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{=URL('index#contact')}}"><i class="glyphicon glyphicon-home"></i> Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="glyphicon glyphicon-home"></i>Next</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                  <table class = "table table-bordered">
+                      <thead>
+                          <tr>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Remark</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                       {{for row in rows:}}
+                          <tr>
+                              <td>{{=row[0].meaning}}</td>
+                              <td>{{=row[0].word}}</td>
+                              {{if row[1] == 1:}}
+                                  <td>Correct</td>
+                              {{else:}}
+                                  <td>Incorrect</td>
+                              {{pass}}
+                          </tr>
+                        {{pass}}
+                      </tbody>
+                </table>
+             </div>
+        </div>
+        <!-- /#page-wrapper -->
+        <h1>
+            <a href="{{=URL('start_test')}}">START ANOTHER TEST??</a>
+        </h1>
+        <h2 style="color:white">
+            Want level wise tests? Try our <a href="{{=URL('deck_page')}}">DECK TESTS</a>
+        </h2>
+    </div>
+    
+    <!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+<script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+<script src="{{=URL('static','js/analytics.min.js')}}"></script>
+    <script type="text/javascript">
+      analytics.initialize({
+      'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'}
+      });
+</script>
+</body>
+
+</html>

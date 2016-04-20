@@ -1,0 +1,3 @@
+<p><a href = {{=URL('load_ques', vars = dict(ind = index_dummy))}}></a>
+    Go back.
+</p>

@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Records</h1>
+{{=SQLTABLE(rows,
+     headers='fieldname:capitalize',
+     linkto = lambda id, table, name: URL(f='pointed_function',args=[id]),
+     truncate=100,
+     upload=URL('download'))
+}}
+{{=BEAUTIFY(request.vars)}}

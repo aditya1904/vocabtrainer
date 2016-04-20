@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+<h1>This is the default/check_ans.html template</h1>
+<p>
+    the answer you gave : {{=users_ans}}
+</p>
+
+<p>
+    the answer is : {{=answer}}
+</p>
+{{=index_dd}}
+{{=sc}}
+
+<p><a href = {{=URL('load_ques')}}>
+    AGAIN?
+    </a>
+</p>
+
+{{=BEAUTIFY(response._vars)}}

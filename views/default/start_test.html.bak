@@ -1,0 +1,91 @@
+<!--
+<p><a href = {{=URL('load_ques')}}>
+    Start a test?
+    </a>
+</p>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Start Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    li{
+        font-size:17px;
+    }
+      
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Forum Page</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="{{=URL('index')}}">Home</a></li>
+        <li><a href="{{=URL('load_ques')}}">Start Test?</a></li>
+        <li><a href="{{=URL('word_listings')}}">Word Listings</a></li>
+        <li><a href="{{=URL('about_us')}}">About Us</a></li>
+        <li><a href="#section3">Contact Us</a></li>
+      </ul><br>
+      
+    </div>
+
+    <div class="col-sm-9">
+        <h2>VOCAB TEST</h2>
+        <ol>
+            <li>This test is an adaptive test for testing your vocabulary.</li>
+            <li>We trust that you are honest, as none oof the test session scores are saved, new test, new session!</li>
+            <li>You will be given a meaning, and you will have to write the word in the text box given.</li>
+            <li>The word should be exact.</li>
+        </ol>
+        
+        <p>
+            You can see the word listings for the words we are going to ask. <a href="{{=URL('word_listings')}}">HERE.</a>
+        </p>
+        <p>
+            At the end, you should be a master in remembering these words.
+        </p>
+        
+        <h1>
+            <a href="{{=URL('load_ques')}}">START TEST??</a>
+        </h1>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>

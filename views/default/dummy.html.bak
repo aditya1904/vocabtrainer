@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h1>This is the default/dummy.html template</h1>
+<p><a href = {{=URL('load_ques', vars = dict(ind = index_dummy))}}>
+    continue?
+    </a>
+</p>

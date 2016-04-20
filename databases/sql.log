@@ -1,0 +1,84 @@
+timestamp: 2016-03-07T22:34:39.675796
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-03-07T22:34:40.003782
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-03-07T22:34:40.192555
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-03-07T22:34:40.440422
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-03-07T22:34:41.602604
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-03-07T22:34:42.228529
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-03-30T22:08:31.167737
+CREATE TABLE easy_words(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    word CHAR(512),
+    meaning TEXT
+);
+success!
+timestamp: 2016-03-30T22:08:31.503913
+CREATE TABLE moderate_words(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    word CHAR(512),
+    meaning TEXT
+);
+success!
+timestamp: 2016-03-30T22:08:31.646377
+CREATE TABLE difficult_words(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    word CHAR(512),
+    meaning TEXT
+);
+success!
+timestamp: 2016-04-06T23:00:29.672516
+CREATE TABLE Suggestions(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Subject CHAR(512),
+    Description TEXT,
+    Author CHAR(512)
+);
+success!

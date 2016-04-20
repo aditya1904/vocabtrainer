@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<h1>This is the default/check_ans.html template</h1>
+
+{{=index_dd}}
+{{=sc}}
+
+<p><a href = {{=URL('load_ques')}}>
+    AGAIN?
+    </a>
+</p>
+
+{{=BEAUTIFY(response._vars)}}

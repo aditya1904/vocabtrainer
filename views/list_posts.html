@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+<h1>
+    Suggestion Page:
+</h1>
+
+{{for row in rows:}}
+<h2>
+    {{=row.Subject}}
+</h2>
+
+<p>
+    {{=row.Description}}
+</p>
+{{pass}}
+
+
+{{=BEAUTIFY(response._vars)}}

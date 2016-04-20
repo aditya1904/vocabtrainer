@@ -1,0 +1,121 @@
+start = 1
+end = 10
+EASY = 10
+MODERATE = 20
+DIFFICULT = 30
+def insert_easy():
+    form = SQLFORM(db.easy_words).process()
+    return locals()
+
+def insert_moderate():
+    form = SQLFORM(db.moderate_words).process()
+    return locals()
+
+def insert_difficult():
+    form = SQLFORM(db.difficult_words).process()
+    return locals()
+##################################################################
+#TEST
+def load_ques():
+    #ind = int(request.vars.ind)
+    # (for non-adaptive) take the index'th entry from the database, and load the ques.
+    # upon submitting, call a function which will check the answers, and load the score appropriately.
+    # from that function further load the load_ques.
+    if session.ind == end:
+        redirect(URL('end_test'))
+    if FLAG == EASY:
+        ques = db.easy_words(session.ind)
+    elif FLAG == MODERATE:
+        ques = db.moderate_words(session.ind)
+    if FLAG == DIFFICULT:
+        ques = db.difficult_words(session.ind)
+    #ques2 = db.moderate_words(session.ind)
+    #session.ind += 1
+    #index_ques = session.ind
+    return locals()
+
+def check_ans():
+    users_ans = request.vars.useranswer
+    index_dd = session.ind
+    if FLAG == EASY:
+        if db.easy_words(session.ind).word == users_ans:
+            session.score = session.score + 10
+        else:
+            session.score = session.score - 10
+    elif FLAG == MODERATE:
+        if db.moderate_words(session.ind).word == users_ans:
+            session.score = session.score + 20
+        else:
+            session.score = session.score - 20
+    elif FLAG == DIFFICULT:
+        if db.difficult_words(session.ind).word == users_ans:
+            session.score = session.score + 30
+        else:
+            session.score = session.score - 30
+    sc = session.score
+    session.ind = session.ind + 1
+    print session.ind
+    #take index of ques, query its answer, check if they match, call the brains function.
+    #the brains is the main brain which will make the test adaptive.
+    return locals()
+
+def brains():
+    #this function will do its computation and redirect to load_ques. For non-adaptivity, this function may not be called.
+    return locals()
+
+def start_test():
+    # first you start with an easy question
+    # wait for the user to answer, as it answers, you need to load an ajax request to a function that
+    # computes what the next question should be, and then that ques loads a function that fetches question from the database
+    # and/or displays it to the user. For now make a non-adaptive test.
+    session.ind = start
+    session.score = 0
+    #redirect(URL('load_ques', vars = dict(score = start)))
+    return locals()
+
+def end_test():
+    sc = session.score
+    return locals()
+#################################################################################
+def index():
+
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
+
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/bulk_register
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
+    """
+    return dict(form=auth())
+
+
+@cache.action()
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()

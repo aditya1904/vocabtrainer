@@ -1,0 +1,185 @@
+<!--<html>
+    
+<body>
+    
+    <h2>
+    Enter the answer in the following text-box:
+</h2>
+{{=ques.meaning}}
+<form action = "{{ = URL('check_ans')}}">
+    <p>Answer:</p>
+    <input type="text" name="useranswer"></br>
+    <input type="submit" value="Submit">
+</form>
+
+<p><a href = {{=URL('load_ques')}}>
+    AGAIN?
+    </a>
+</p>
+    
+<p><a href = "{{=URL('end_test')}}">
+        End Test??
+    </a>
+</p>
+    </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VocabTrainer</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <link href="{{=URL('static', 'css/styles2.css')}}" rel="stylesheet">
+    <!-- All JavaScript at the bottom, except for Modernizr which enables
+         HTML5 elements & feature detects -->
+    <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+
+    <!-- Custom CSS -->
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand glyphicon glyphicon-home"  href="qq">Home</a>
+            </div>
+            <!-- Top Menu Items -->
+    
+            
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="{{=URL('end_test')}}"><i class="glyphicon glyphicon-home"></i> Scorecard</a>
+                    </li>
+                    <li>
+                        <a href="{{=URL('index#about')}}"><i class="glyphicon glyphicon-home"></i> About</a>
+                    </li>
+                    <li>
+                        <a href="{{=URL('end_test')}}"><i class="glyphicon glyphicon-home"></i> End Test</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-home"></i> Learn <i class="caret"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{{=URL('list_easy_words')}}">Easy Words</a>
+                            </li>
+                            <li>
+                                <a href="{{=URL('list_moderate_words')}}">Moderate Words</a>
+                            </li>
+                            <li>
+                                <a href="{{=URL('list_difficult_words')}}">Difficult Words</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{=URL('index#contact')}}"><i class="glyphicon glyphicon-home"></i>Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="glyphicon glyphicon-home"></i>Next</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+      
+        <link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/ansbox.css')}}">                
+       
+        <!--<div class="fun-cube"><i class="fa fa-cube"></i></div>-->
+        <h2 color="black">{{=ques.meaning}}</h2>
+        </br>
+        <!-- heirarchy: #cuboid > form > div*4(cuboid faces) -->
+                <div id="cuboid">
+                    <form action="{{ = URL('check_ans')}}">
+                        <!-- #1 hover button -->
+                        <div>
+                            <p class="cuboid-text">Answer</p>
+                        </div>
+                        <!-- #2 text input -->
+                        <div>
+                            <!-- Label to trigger #submit -->
+                            <label for="submit" class="submit-icon">
+                                <i class="fa fa-chevron-right"></i>
+                            </label>
+                            <input type="text" id="answer" name="useranswer" class="cuboid-text" placeholder="Answer" autocomplete="off"/>
+                            <!-- hidden submit button -->
+                            <input type="submit" id="submit" />
+                        </div>
+                         <div>
+                    <p class="cuboid-text loader"></p>
+                </div>
+		
+		            </form>
+                </div>
+
+        <!-- jQuery -->
+        <script type="text/javascript">//jQuery time
+
+                //add '.ready' to form when user focuses on it
+                $("#email").focus(function(){
+                    $("#cuboid form").addClass("ready");
+                })
+                //remove '.ready' when user blus away but only if there is no content
+                $("#email").blur(function(){
+                    if($(this).val() == "")
+                        $("#cuboid form").removeClass("ready");
+                })
+
+                //If the user is typing something make the arrow green/.active
+                $("#email").keyup(function(){
+                    //this adds .active class only if the input has some text
+                    $(".submit-icon").toggleClass("active", $(this).val().length > 0);
+                }}
+        </script>
+            
+        <p><a href = {{=URL('load_ques')}}>
+         <br>   AGAIN?
+            </a>
+        </p>
+
+        <p><a href = "{{=URL('end_test')}}">
+               End Test??
+            </a>
+        </p>        
+       
+        <!-- /#page-wrapper -->
+
+    </div>
+    
+    <!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+<script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+<script src="{{=URL('static','js/analytics.min.js')}}"></script>
+    <script type="text/javascript">
+      analytics.initialize({
+      'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'}
+      });
+</script>
+</body>
+
+</html>

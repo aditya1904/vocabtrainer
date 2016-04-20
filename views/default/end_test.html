@@ -1,0 +1,44 @@
+<!--
+<p>
+    The test has ended.
+</p>
+
+<p>
+    Your score is : {{=sc}}
+</p>
+<p><a href = "{{=URL('show_ans')}}">
+    Analysis
+    </a>
+</p>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score</title>
+</head>
+<body bgcolor="#E6E6FA">
+
+    <!-- Header -->
+    <header>
+        <div>
+                    <center>
+                    <br><br>
+                    <img src="{{=URL('static','images/profile.png')}}" alt="">
+                    <div>
+                        <br>
+                        <span><h1>Score  <br><br>{{=sc}}</h1></span>
+                        <a href="{{=URL('index')}}"><h3>Home</h3></a></li>
+                        <a href="{{=URL('start_test')}}"><h4>Play Again?</h4></a></li>
+                        <a href="{{=URL('show_ans')}}"><h4>ANALYSIS</h4></a></li>
+ 
+        </div>
+                    </center>
+        </div>
+    </header>
+
+
+
+
+</body>
+</html>

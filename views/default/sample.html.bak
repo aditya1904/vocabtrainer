@@ -1,0 +1,55 @@
+{{extend 'layout.html'}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/ansbox.css')}}">                
+
+        <!--<div class="fun-cube"><i class="fa fa-cube"></i></div>-->
+        <h2 color="black">Bla Bla Bla</h2>
+        </br>
+        <!-- heirarchy: #cuboid > form > div*4(cuboid faces) -->
+                <div id="cuboid">
+                    <form action=".">
+                        <!-- #1 hover button -->
+                        <div>
+                            <p class="cuboid-text">Answer</p>
+                        </div>
+                        <!-- #2 text input -->
+                        <div>
+                            <!-- Label to trigger #submit -->
+                            <label for="submit" class="submit-icon">
+                                <i class="fa fa-chevron-right"></i>
+                            </label>
+                            <input type="text" name="useranswer" class="cuboid-text" placeholder="Answer" autocomplete="off"/>
+                            <!-- hidden submit button -->
+                            <input type="submit" id="submit" />
+                        </div>
+                    </form>
+                </div>
+
+        <!-- jQuery -->
+        <script type="text/javascript">//jQuery time
+
+                //add '.ready' to form when user focuses on it
+                $("#email").focus(function(){
+                    $("#cuboid form").addClass("ready");
+                })
+                //remove '.ready' when user blus away but only if there is no content
+                $("#email").blur(function(){
+                    if($(this).val() == "")
+                        $("#cuboid form").removeClass("ready");
+                })
+
+                //If the user is typing something make the arrow green/.active
+                $("#email").keyup(function(){
+                    //this adds .active class only if the input has some text
+                    $(".submit-icon").toggleClass("active", $(this).val().length > 0);
+                }}
+        </script>
+            
+        <p><a href = {{=URL('load_ques')}}>
+            AGAIN?
+            </a>
+        </p>
+
+        <p><a href = "{{=URL('end_test')}}">
+                End Test??
+            </a>
+        </p>
